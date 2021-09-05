@@ -1,9 +1,10 @@
+import { Spinner } from "react-bootstrap";
 import Pagination from "./Pagination";
 import "./pokedex.css";
 import Pokemon from "./Pokemon";
 
 export default function Pokedex(props) {
-  const { pokemons, page, setPage, total } = props;
+  const { pokemons, page, setPage, total, loading } = props;
 
   const lastPage = () => {
     const nextPage = Math.min(page - 1 , total)
@@ -27,15 +28,19 @@ export default function Pokedex(props) {
           onRightClick={nextPage}
         />
       </div>
-      <div className="container pokedex-grid mb-5">
-        <div className="row">
-          {pokemons.map((pokemon, idx) => (
-            <div key={idx} className="col-4">
-              <Pokemon pokemon={pokemon} key={pokemon.name} />
-            </div>
-          ))}
+      {loading ? <div className="text-center">
+        <Spinner animation="border" variant="danger" />
+        Cargando pokemons... </div> :
+        <div className="container pokedex-grid mb-5">
+          <div className="row">
+            {pokemons.map((pokemon, idx) => (
+              <div key={idx} className="col-4">
+                <Pokemon pokemon={pokemon} key={pokemon.name} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      }
     </div>
   );
 }

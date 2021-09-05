@@ -13,7 +13,7 @@ export const searchPokemon = async (pokemon) => {
 
 
 // para listar y traer limitado el numero de pokemon de la api
-export const getPokemons = async (limit = 25, offset = 0) => {
+export const getPokemons = async (limit = 21, offset = 0) => {
     try {
         let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
         const response = await fetch(url)
