@@ -21,7 +21,7 @@ export default function Searchbar() {
 
   return (
     <div>
-      <Form className="container d-flex mt-4">
+      <Form className="container d-flex ">
           <FormControl
           type="search"
           placeholder="Buscar pokemon..."
