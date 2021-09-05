@@ -1,3 +1,4 @@
+import Pagination from "./Pagination";
 import "./pokedex.css";
 import Pokemon from "./Pokemon";
 
@@ -7,7 +8,7 @@ export default function Pokedex(props) {
     <div>
       <div className="container header">
         <h1>Pokedex</h1>
-        <div> Pagination</div>
+        <Pagination />
       </div>
       <div className="container pokedex-grid">
         <div className="row">
