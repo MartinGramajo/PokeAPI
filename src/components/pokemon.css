@@ -16,18 +16,10 @@
     padding: 10px 0px;
 };
 
-.pokemon-type{
-    display: flex;
-}
-
-
 .card-body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 };
 
-.card-top h3{
-    text-transform: capitalize;
-};
 

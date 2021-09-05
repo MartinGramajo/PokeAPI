@@ -9,13 +9,13 @@ const Pokemon = (props) => {
       </div>
       <div className="card-body p-4">
         <div className="card-top d-flex flex-row  justify-content-between align-items-center">
-          <h3>{pokemon.name}</h3>
+          <h3 className="text-info">{pokemon.name}</h3>
           <div>#{pokemon.id}</div>
         </div>
         <div className="card-bottom d-flex flex-row  justify-content-between align-items-center ">
           <div className="pokemon-type d-flex ">
-            {pokemon.types.map((type, idx) => {
-              return <div key={idx}> {type.type.name}</div>;
+                      {pokemon.types.map((type, idx) => {
+                          return <div className="text-danger" style={{ marginRight: '10px'}} key={idx}> {type.type.name}</div>;
             })}
           </div>
         <div className="mt-2 pokemon-favorite"> ❤ </div>
