@@ -16,11 +16,11 @@ const Pokemon = (props) => {
   }
 
   return (
-    <div className="pokemon-card p-1">
+    <div className="pokemon-card p-1 mb-3">
       <div className="pokemon-img">
         <img src={pokemon.sprites.front_default} alt={pokemon.name} />
       </div>
-      <div className="card-body p-4">
+      <div className="card-body p-4 bg-dark">
         <div className="card-top d-flex flex-row  justify-content-between align-items-center">
           <h3 className="text-info">{pokemon.name}</h3>
           <div>#{pokemon.id}</div>
@@ -30,7 +30,7 @@ const Pokemon = (props) => {
             {pokemon.types.map((type, idx) => {
               return (
                 <div
-                  className="text-danger"
+                  className="bg-secondary rounded-2 p-1 text-white"
                   style={{ marginRight: "10px" }}
                   key={idx}
                 >
@@ -39,8 +39,8 @@ const Pokemon = (props) => {
               );
             })}
           </div>
-          <Button onClick={clickHeart} variant="outline-light">
-            <div className="m-auto pokemon-favorite"> {heart} </div>
+          <Button className="bg-white" onClick={clickHeart} variant="outline-light">
+            <div className="m-auto pokemon-favorite bg-white"> {heart} </div>
           </Button>
         </div>
       </div>
