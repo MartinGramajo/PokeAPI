@@ -5,19 +5,14 @@ import NavReact from "./components/NavReact";
 import Pokedex from "./components/Pokedex";
 import Searchbar from "./components/Searchbar";
 import { getPokemonData, getPokemons } from "./api";
-
-
-
-
-
-
+import { FavoriteProvider } from "./Contexts/favoriteContext";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState();
   const [loading, setLoading] = useState(true);
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(['raichu']);
 
 
 
@@ -25,7 +20,7 @@ function App() {
     const fetchPokemons = async () => {
       try {
         setLoading(true)
-        const data = await getPokemons(21, 21 * page);
+        const data = await getPokemons(25, 25 * page);
         const promises = data.results.map(async (pokemon) => {
           return await getPokemonData(pokemon.url) // array de promesa con datos especifico de cada pokemon. crea 10 promesas para cada pokemon.
         })
@@ -42,10 +37,21 @@ function App() {
 
 
   const updateFavoritePokemons = (name) => {
-    console.log(name);
-}
+    const updated = [...favorites]
+    const isFavorite = updated.indexOf(name);
+    if (isFavorite >= 0) {
+      updated.splice(isFavorite, 1);
+    } else {
+      updated.push(name);
+    }
+    setFavorites(updated);
+  };
 
   return (
+    <FavoriteProvider value={{
+      favoritePokemons: favorites,
+      updateFavoritePokemons: updateFavoritePokemons
+    }}>
       <div >
         <NavReact />
         <Searchbar />
@@ -57,6 +63,7 @@ function App() {
           total={total}
         />
       </div>
+    </FavoriteProvider>
   );
 }
 

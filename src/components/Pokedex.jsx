@@ -1,11 +1,16 @@
-import { Spinner } from "react-bootstrap";
-import Pagination from "./Pagination";
+import React from 'react';
 import "./pokedex.css";
 import Pokemon from "./Pokemon";
+import { Spinner } from "react-bootstrap";
+import Pagination from "./Pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import FavoriteContext from '../Contexts/favoriteContext';
+
+const { useContext } = React; // defino el context
 
 export default function Pokedex(props) {
+  const {favoritePokemons} = useContext(FavoriteContext) // uso el context
   const { pokemons, page, setPage, total, loading } = props;
 
   const lastPage = () => {
@@ -23,7 +28,7 @@ export default function Pokedex(props) {
     <div>
       <div className="container header">
         <h1>Pokedex  </h1>
-        <p className="text-black-50"> Favoritos: <FontAwesomeIcon icon={faHeart} /> { 100 }</p>
+        <p className="text-black-50"> Favoritos: <FontAwesomeIcon icon={faHeart} /> {favoritePokemons.length}</p>
         <Pagination
           page={page + 1}
           totalPages={total}
@@ -34,10 +39,10 @@ export default function Pokedex(props) {
       {loading ? <div className="text-center">
         <Spinner animation="border" variant="danger" />
         Cargando pokemons... </div> :
-        <div className="container pokedex-grid mb-5">
+        <div className="container mb-5">
           <div className="row">
             {pokemons.map((pokemon, idx) => (
-              <div key={idx} className="col-4">
+              <div key={idx} className="col-lg-4 col-md-6 col-sm-12">
                 <Pokemon pokemon={pokemon} key={pokemon.name} />
               </div>
             ))}
