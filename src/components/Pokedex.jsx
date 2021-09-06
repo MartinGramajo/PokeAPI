@@ -5,7 +5,10 @@ import { Spinner } from "react-bootstrap";
 import Pagination from "./Pagination";
 import FavoriteContext from '../Contexts/favoriteContext';
 
+
 const { useContext } = React; // defino el context
+
+
 
 export default function Pokedex(props) {
   const {favoritePokemons} = useContext(FavoriteContext) // uso el context
@@ -13,21 +16,23 @@ export default function Pokedex(props) {
   const heart= "❤"
 
   const lastPage = () => {
-    const nextPage = Math.min(page - 1 , total)
+    const nextPage = Math.min(page - 1, total)
     setPage(nextPage)
-  }
+  };
 
 
   const nextPage = () => {
-    const nextPage = Math.min(page + 1 , total)
+    const nextPage = Math.min(page + 1, total)
     setPage(nextPage)
-  }
+  };
+
 
   return (
     <div>
       <div className="container header">
-        <h1>Pokedex  </h1>
-        <p> Favorites Pokemons: {heart} {favoritePokemons.length}</p>
+        <h1>Pokedex </h1>
+        <p> Favorites Pokemons: {heart} {favoritePokemons.length}   
+        </p>
         <Pagination
           page={page + 1}
           totalPages={total}
