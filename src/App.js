@@ -9,11 +9,15 @@ import { getPokemonData, getPokemons } from "./api";
 
 
 
+
+
+
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState();
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState([]);
 
 
 
@@ -29,17 +33,22 @@ function App() {
         setPokemons(results)
         setLoading(false);
         setTotal(Math.ceil(data.count / 21));
-  
+
       } catch (error) {
       }
     }
     fetchPokemons()
   }, [page])
 
+
+  const updateFavoritePokemons = (name) => {
+    console.log(name);
+}
+
   return (
-    <div >
-      <NavReact />
-      <Searchbar />
+      <div >
+        <NavReact />
+        <Searchbar />
         <Pokedex
           loading={loading}
           pokemons={pokemons}
@@ -47,7 +56,7 @@ function App() {
           setPage={setPage}
           total={total}
         />
-    </div>
+      </div>
   );
 }
 

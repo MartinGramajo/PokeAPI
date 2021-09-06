@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Form, FormControl, Button, Card } from "react-bootstrap";
 import { searchPokemon } from "../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
+import { faHeartbeat, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Searchbar() {
@@ -31,7 +31,8 @@ export default function Searchbar() {
         />
         <Button className="button-search my-5 mx-3" style={{border:'none', borderRadius:'10px', height: '44px'}} variant="dark" onClick={onClick}  >
         <FontAwesomeIcon icon={faSearchPlus} />
-        </Button>
+        </Button> 
+        
       </Form>
       <div className="container mx-auto p-5">
         {pokemon && (

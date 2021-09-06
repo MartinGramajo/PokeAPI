@@ -2,6 +2,8 @@ import { Spinner } from "react-bootstrap";
 import Pagination from "./Pagination";
 import "./pokedex.css";
 import Pokemon from "./Pokemon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export default function Pokedex(props) {
   const { pokemons, page, setPage, total, loading } = props;
@@ -20,7 +22,8 @@ export default function Pokedex(props) {
   return (
     <div>
       <div className="container header">
-        <h1>Pokedex</h1>
+        <h1>Pokedex  </h1>
+        <p className="text-black-50"> Favoritos: <FontAwesomeIcon icon={faHeart} /> { 100 }</p>
         <Pagination
           page={page + 1}
           totalPages={total}

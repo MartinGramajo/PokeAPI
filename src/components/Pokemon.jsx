@@ -2,6 +2,9 @@ import "./pokemon.css";
 
 const Pokemon = (props) => {
   const { pokemon } = props;
+  const redHeart = "❤"
+  const blackHeart = "🖤"
+
   return (
     <div className="pokemon-card p-1">
       <div className="pokemon-img">
@@ -18,7 +21,7 @@ const Pokemon = (props) => {
                           return <div className="text-danger" style={{ marginRight: '10px'}} key={idx}> {type.type.name}</div>;
             })}
           </div>
-        <div className="mt-2 pokemon-favorite"> ❤ </div>
+        <div className="mt-2 pokemon-favorite"> {redHeart} </div>
         </div>
       </div>
     </div>
