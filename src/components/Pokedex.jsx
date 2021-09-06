@@ -28,9 +28,9 @@ export default function Pokedex(props) {
 
 
   return (
-    <div>
-      <div className="container header">
-        <h1 className="text-white">Pokedex </h1>
+    <div className="container">
+      <div className=" row header">
+        <h1 className="text-white col-sm-4 col-md-4">Pokedex </h1>
         <h1 className="text-danger"> Favorites Pokemons: {heart} {favoritePokemons.length}   
         </h1>
         <Pagination
