@@ -1,22 +1,24 @@
 import './searchbar.css'
 import { useState } from "react";
-import { Form, FormControl, Button, Card } from "react-bootstrap";
-import { searchPokemon } from "../api";
+import { Form, FormControl, Button} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 
 
-export default function Searchbar() {
+export default function Searchbar(props) {
+  const { onSearch } = props;
   const [search, setSearch] = useState("");
-  const [pokemon, setPokemons] = useState();
+
 
   const onChange = (event) => {
     setSearch(event.target.value);
+    if (event.target.value.length === 0) {
+      onSearch(null);
+    }
   };
 
   const onClick = async (e) => {
-    const data = await searchPokemon(search);
-    setPokemons(data);
+    onSearch(search);
   };
 
   return (
@@ -32,23 +34,7 @@ export default function Searchbar() {
         <Button className="button-search my-5 mx-3" style={{border:'none', borderRadius:'10px', height: '44px'}} variant="dark" onClick={onClick}  >
         <FontAwesomeIcon icon={faSearchPlus} />
         </Button> 
-        
       </Form>
-      <div className="container mx-auto p-5">
-        {pokemon && (
-          <div>
-            <Card style={{ width: "18rem" }}>
-              <Card.Img src={pokemon.sprites.front_default} />
-              <Card.Body>
-                <Card.Title>{pokemon.name}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                </Card.Subtitle>
-                <Card.Text>peso: {pokemon.weight}</Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
