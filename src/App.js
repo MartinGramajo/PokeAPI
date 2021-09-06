@@ -4,8 +4,11 @@ import './App.css';
 import NavReact from "./components/NavReact";
 import Pokedex from "./components/Pokedex";
 import Searchbar from "./components/Searchbar";
-import { getPokemonData, getPokemons } from "./api";
+import { getPokemonData, getPokemons, searchPokemon } from "./api";
 import { FavoriteProvider } from "./Contexts/favoriteContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { Image } from "react-bootstrap";
 
 const localStorageKey = "favorite_pokemon";
 
@@ -15,36 +18,41 @@ function App() {
   const [total, setTotal] = useState();
   const [loading, setLoading] = useState(true);
   const [favorites, setFavorites] = useState([]);
-  
-  const loadFavoritePokemons = () => {
-    const pokemons = JSON.parse(localStorage.getItem(localStorageKey)) || [];
-    setFavorites(pokemons);
-  }
+  const [notFound, setNotFound] = useState(false);
 
+  //llamado de la Api.
+  const fetchPokemons = async () => {
+    try {
+      setLoading(true)
+      const data = await getPokemons(25, 25 * page);
+      const promises = data.results.map(async (pokemon) => {
+        return await getPokemonData(pokemon.url)
+      })
+      const results = await Promise.all(promises)
+      setPokemons(results)
+      setLoading(false);
+      setTotal(Math.ceil(data.count / 21));
+      setNotFound(false);
 
-  useEffect(() => {
-    const fetchPokemons = async () => {
-      try {
-        setLoading(true)
-        const data = await getPokemons(25, 25 * page);
-        const promises = data.results.map(async (pokemon) => {
-          return await getPokemonData(pokemon.url) // array de promesa con datos especifico de cada pokemon. crea 10 promesas para cada pokemon.
-        })
-        const results = await Promise.all(promises) // con el await hacemos esperar al codigo hasta que regrese el array de promesas de la linea 19.
-        setPokemons(results)
-        setLoading(false);
-        setTotal(Math.ceil(data.count / 21));
-
-      } catch (error) {
-      }
+    } catch (error) {
     }
-    fetchPokemons()
-  }, [page])
+  };
 
+  //llamado del consumo de la api y seteo del array de dependencia "page". 
   useEffect(() => {
+    fetchPokemons()
+  }, [page]);
+
+  // traer los datos del localS y setearlo en el state "pokemons". llamado de la funcion una vez. 
+  useEffect(() => {
+    const loadFavoritePokemons = () => {
+      const pokemons = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+      setFavorites(pokemons);
+    };
     loadFavoritePokemons();
   }, [])
 
+  //funcion para guardar en el localS y marcar el pokemon favorito. 
   const updateFavoritePokemons = (name) => {
     const updated = [...favorites]
     const isFavorite = updated.indexOf(name);
@@ -57,6 +65,23 @@ function App() {
     localStorage.setItem(localStorageKey, JSON.stringify(updated));
   };
 
+  //funcion para buscar el pokemon
+  const onSearch = async (pokemon) => {
+    if (!pokemon) {
+      return fetchPokemons();
+    }
+    setLoading(true);
+    const result = await searchPokemon(pokemon);
+    if (!result) {
+      setNotFound(true);
+      setLoading(false);
+      return;
+    } else {
+      setPokemons([result]);
+    }
+    setLoading(false);
+  }
+
   return (
     <FavoriteProvider value={{
       favoritePokemons: favorites,
@@ -64,14 +89,19 @@ function App() {
     }}>
       <div >
         <NavReact />
-        <Searchbar />
-        <Pokedex
-          loading={loading}
-          pokemons={pokemons}
-          page={page}
-          setPage={setPage}
-          total={total}
-        />
+        <Searchbar onSearch={onSearch} />
+        {notFound ?
+          (<div className="text-center fs-5"> <FontAwesomeIcon icon={faExclamationCircle} /> No se encontro el pokemon que buscabas!
+            <Image style={{ width: '250px' }} src="https://estaticos-cdn.elperiodico.com/clip/a118c596-2966-48df-a0c9-c6ec4a2b4f3a_alta-libre-aspect-ratio_default_0.jpg" />
+          </div>) :
+          (<Pokedex
+            loading={loading}
+            pokemons={pokemons}
+            page={page}
+            setPage={setPage}
+            total={total}
+          />
+          )}
       </div>
     </FavoriteProvider>
   );
