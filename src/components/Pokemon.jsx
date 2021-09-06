@@ -20,7 +20,7 @@ const Pokemon = (props) => {
       <div className="pokemon-img">
         <img src={pokemon.sprites.front_default} alt={pokemon.name} />
       </div>
-      <div className="card-body p-4 bg-dark">
+      <div className="card-body p-2 bg-dark">
         <div className="card-top d-flex flex-row  justify-content-between align-items-center">
           <h3 className="text-info">{pokemon.name}</h3>
           <div className="text-white">#{pokemon.id}</div>
