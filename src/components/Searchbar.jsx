@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Form, FormControl, Button, Card } from "react-bootstrap";
 import { searchPokemon } from "../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeartbeat, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
+import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Searchbar() {

@@ -7,13 +7,19 @@ import Searchbar from "./components/Searchbar";
 import { getPokemonData, getPokemons } from "./api";
 import { FavoriteProvider } from "./Contexts/favoriteContext";
 
+const localStorageKey = "favorite_pokemon";
+
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState();
   const [loading, setLoading] = useState(true);
-  const [favorites, setFavorites] = useState(['raichu']);
-
+  const [favorites, setFavorites] = useState([]);
+  
+  const loadFavoritePokemons = () => {
+    const pokemons = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+    setFavorites(pokemons);
+  }
 
 
   useEffect(() => {
@@ -35,6 +41,9 @@ function App() {
     fetchPokemons()
   }, [page])
 
+  useEffect(() => {
+    loadFavoritePokemons();
+  }, [])
 
   const updateFavoritePokemons = (name) => {
     const updated = [...favorites]
@@ -45,6 +54,7 @@ function App() {
       updated.push(name);
     }
     setFavorites(updated);
+    localStorage.setItem(localStorageKey, JSON.stringify(updated));
   };
 
   return (
