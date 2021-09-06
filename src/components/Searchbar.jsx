@@ -31,7 +31,7 @@ export default function Searchbar(props) {
           aria-label="Search"
           onChange={onChange}
         />
-        <Button className="button-search my-5 mx-3" style={{border:'none', borderRadius:'10px', height: '44px'}} variant="dark" onClick={onClick}  >
+        <Button className="button-search bg-danger  my-5 mx-3" style={{border:'none', borderRadius:'10px', height: '44px'}} variant="dark" onClick={onClick}  >
         <FontAwesomeIcon icon={faSearchPlus} />
         </Button> 
       </Form>

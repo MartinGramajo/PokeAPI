@@ -8,7 +8,7 @@ export default function Pagination(props) {
    
     return (
         <div>
-            <div className="d-flex flex-row align-items-center">
+            <div className="d-flex flex-row align-items-center text-white">
                 <Button onClick={onLeftClick}  variant="primary"><FontAwesomeIcon icon={faArrowLeft} /> </Button>
                 <div className="m-auto p-2"> {page} of { totalPages }</div>
                 <Button onClick={onRightClick} variant="primary"><FontAwesomeIcon icon={faArrowRight} /></Button>
