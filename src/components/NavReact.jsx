@@ -8,7 +8,7 @@ export default function NavReact() {
   const pikachu = "https://assets.stickpng.com/images/580b57fcd9996e24bc43c325.png"
   return (
     <div>
-      <Navbar className="nav"   fixed="top" bg="dark" expand="lg">
+      <Navbar className="nav"  bg="dark" expand="lg">
         <div>
           <Navbar.Brand href="#home">
             <div>
