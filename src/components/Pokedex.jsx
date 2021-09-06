@@ -27,7 +27,7 @@ export default function Pokedex(props) {
     <div>
       <div className="container header">
         <h1>Pokedex  </h1>
-        <p> Favoritos: {heart} {favoritePokemons.length}</p>
+        <p> Favorites Pokemons: {heart} {favoritePokemons.length}</p>
         <Pagination
           page={page + 1}
           totalPages={total}

@@ -19,6 +19,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [favorites, setFavorites] = useState([]);
   const [notFound, setNotFound] = useState(false);
+  const [searching, setSearching] = useState(false);
 
   //llamado de la Api.
   const fetchPokemons = async () => {
@@ -40,7 +41,9 @@ function App() {
 
   //llamado del consumo de la api y seteo del array de dependencia "page". 
   useEffect(() => {
-    fetchPokemons()
+    if (!searching) {
+      fetchPokemons()
+    }
   }, [page]);
 
   // traer los datos del localS y setearlo en el state "pokemons". llamado de la funcion una vez. 
@@ -71,6 +74,8 @@ function App() {
       return fetchPokemons();
     }
     setLoading(true);
+    setNotFound(false);
+    setSearching(true);
     const result = await searchPokemon(pokemon);
     if (!result) {
       setNotFound(true);
@@ -78,8 +83,12 @@ function App() {
       return;
     } else {
       setPokemons([result]);
+      setPage(0);
+      setTotal(1);
+
     }
     setLoading(false);
+    setSearching(false);
   }
 
   return (
