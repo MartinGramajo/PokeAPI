@@ -9,6 +9,7 @@ import { FavoriteProvider } from "./Contexts/favoriteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { Image } from "react-bootstrap";
+import Pagination from "./components/Pagination";
 
 const localStorageKey = "favorite_pokemon";
 

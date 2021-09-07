@@ -16,7 +16,7 @@
     background-image: url(https://image.freepik.com/vector-gratis/fondo-unicornio-malla-arco-iris-universo-colorido-colores-princesa-gradiente-fantasia-holograma_1378-2190.jpg);
     max-width: 100%;
     margin: auto;
-    padding: 10px;
+    padding: 5px;
     display: flex; 
     flex-direction: column;
 };
