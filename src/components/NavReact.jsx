@@ -8,18 +8,17 @@ export default function NavReact() {
   const pikachu = "https://assets.stickpng.com/images/580b57fcd9996e24bc43c325.png"
   return (
     <div>
-      <Navbar className="nav mt-4"  bg="dark" expand="lg">
+      <Navbar className="nav mt-2"  bg="dark" expand="lg">
         <div>
           <Navbar.Brand href="#home">
             <div>
             <img
-                className=" mt-1"
-                style={{width:'100px'}}
+                style={{width:'70px'}}
                 src={pikachu}
                 alt="PokeApi-logo"
               />
               <img
-                className="navbar-image mt-2"
+                className="navbar-image mt-1"
                 src={imgUrl}
                 alt="PokeApi-logo"
               />
