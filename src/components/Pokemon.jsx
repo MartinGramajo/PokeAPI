@@ -19,12 +19,11 @@ const Pokemon = (props) => {
   return (
       <div className="pokemon-card p-1 mb-3">
         <div className="pokemon-img">
+            <h3 className="text-white text-center bg-dark">{pokemon.name} #{pokemon.id} </h3>
           <img src={pokemon.sprites.front_default} alt={pokemon.name} />
         </div>
-        <div className="card-body p-1 bg-dark">
+        <div className="card-body p-3 bg-dark">
           <div className="card-top d-flex flex-row  justify-content-between align-items-center">
-            <h3 className="text-info">{pokemon.name}</h3>
-            <div className="text-white">#{pokemon.id}</div>
           </div>
           <div className="card-bottom d-flex flex-row  justify-content-between align-items-center ">
             <div className="pokemon-type d-flex ">
@@ -52,7 +51,7 @@ const Pokemon = (props) => {
             {pokemon.abilities.map((ability, idx) => {
               return (
                 <div
-                  className="bg-warning rounded-2  text-dark mt-3"
+                  className="bg-warning rounded-2 p-1  text-dark mt-3"
                   style={{ marginRight: "10px" }}
                   key={idx}
                 >
