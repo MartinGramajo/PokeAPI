@@ -14,9 +14,8 @@ export default function Pokedex(props) {
   return (
     <div className="container">
       <div className=" row header">
-        <h1 className="text-white text-center col-sm-4 ">Pokedex </h1>
-        <h1 className="text-danger text-center   col-sm-4 col-md-4">
-          Favorites {heart} {favoritePokemons.length}
+        <h1 className="text-danger text-center">
+          <img style={{width:'250px'}} src="https://res.cloudinary.com/dtbfspso5/image/upload/v1632508639/3bd785059e50cd245a94d858ae8af472_vqqupq.png" alt="" /> {heart} {favoritePokemons.length}
         </h1>
       </div>
       {loading ? (
