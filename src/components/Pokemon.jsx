@@ -17,45 +17,70 @@ const Pokemon = (props) => {
   };
 
   return (
-      <div className="container pokemon-card p-1 mb-3" style={{width:'350px'}}>
-        <div className="box pokemon-img">
-          <img className="pokemon-fondo " src={pokemon.sprites.front_default} alt={pokemon.name}  />
-        <h3 className="text-dark text-center">{pokemon.name} <span className="text-black-50"> {pokemon.weight}Hp </span>  </h3>
-        <span className=" text-black-50 text-center"> {pokemon.base_experience} exp </span>
-        </div>
-        <div className="card-footer p-3 ">
-          <div className="d-flex flex-row  justify-content-between align-items-center ">
-            <div className="pokemon-type d-flex ">
-              {pokemon.types.map((type, idx) => {
-                return (
-                  <div
-                    className="pokemon-type  rounded-2 p-1 text-dark"
-                    style={{ marginRight: "15px" }}
-                    key={idx}
-                  >
-                    <div className="fs-5 text-black-50">
-                      {type.type.name}
-                    </div>
-                    <div className="text-center fs-6">
-                      type
-                    </div>
+    <div className="container pokemon-card p-1 mb-3" style={{ width: "350px" }}>
+      <div className="box pokemon-img">
+        <img
+          className="pokemon-fondo "
+          src={pokemon.sprites.front_default}
+          alt={pokemon.name}
+        />
+        <h3 className="text-dark text-center">
+          {pokemon.name}{" "}
+          <span className=" text-black-50 text-center fs-6">
+            {" "}
+            {pokemon.base_experience} exp{" "}
+          </span>
+        </h3>
+        <div  className="d-flex justify-content-center" >
+        {pokemon.types.map((types, idx) => {
+              return (
+                <div      
+                  key={idx}
+                >
+                  <div className="fs-6 text-black-50 me-2 "> 
+                  {types.type.name}
                   </div>
-                );
-              })}
+                </div>
+              );
+            })}
+        </div>
+      </div>    
+      <div className="card-footer p-3 ">
+        <div className="d-flex flex-wrap justify-content-between align-items-center ">
+          <div>
+            {pokemon.stats.map((stats, idx) => {
+              return (
+                <div
+                  className="pokemon-type  rounded-2 p-1 text-dark"
+                  style={{ marginRight: "15px" }}
+                  key={idx}
+                >
+                  <div className="fs-6  d-flex flex-row">
+                    {stats.stat.name}:{" "}
+                    <span className="text-black-50 mx-1">
+                      {" "}
+                      {stats.base_stat}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-
-            <div>
-            <Button
-              className="bg-white"
-              onClick={clickHeart}
-              variant="outline-light"
-            >
-              <div className="m-auto pokemon-favorite bg-white"> {heart} </div>
-            </Button>
-            </div>
+          
+          <div className="d-flex">
+              <div>
+                <Button
+                  className=" border-0 boton-pokemon"
+                  onClick={clickHeart}
+                  variant="warning"
+                >
+                  <div className="pokemon-favorite"> {heart} </div>
+                </Button>
+              </div>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
