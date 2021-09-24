@@ -10,6 +10,7 @@
 .pokemon-card:hover {
     -webkit-transform:scale(1.3);transform:scale(0.99);
 }
+
 .pokemon-fondo{
     border-radius: 160px;
     background: white;
