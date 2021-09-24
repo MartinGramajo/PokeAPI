@@ -23,6 +23,11 @@ export default function Searchbar(props) {
 
   return (
     <div>
+      <div className="text-center">
+        <img
+          className="poke-titulo"
+          src="https://res.cloudinary.com/dtbfspso5/image/upload/v1632508786/d28472afb9a391904f9eab67724b5431_fnhqcm.png" alt="" />
+      </div>
       <Form className="container d-flex ">
           <FormControl
           type="search"
