@@ -91,6 +91,16 @@ function App() {
     setLoading(false);
     setSearching(false);
   }
+  const lastPage = () => {
+    const nextPage = Math.min(page - 1, total);
+    setPage(nextPage);
+  };
+
+  const nextPage = () => {
+    const nextPage = Math.min(page + 1, total);
+    setPage(nextPage);
+  };
+
 
   return (
     <FavoriteProvider value={{
@@ -112,6 +122,14 @@ function App() {
             total={total}
           />
           )}
+        <div className="d-flex justify-content-center">
+          <Pagination
+            page={page + 1}
+            totalPages={total}
+            onLeftClick={lastPage}
+            onRightClick={nextPage}
+          />
+        </div>
       </div>
     </FavoriteProvider>
   );
