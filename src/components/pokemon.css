@@ -1,3 +1,11 @@
+.pokemon-fondo{
+    border-radius: 160px;
+    background: white;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
 .pokemon-card {
     background-color: white;
     box-shadow: 4px 4px 4px rgba(0,0,0,0.25);
@@ -11,14 +19,6 @@
     -webkit-transform:scale(1.3);transform:scale(0.99);
 }
 
-.pokemon-fondo{
-    border-radius: 160px;
-    background: white;
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-}
 .pokemon-img{
     background-image: url(https://res.cloudinary.com/dtbfspso5/image/upload/v1632504019/descarga_fgqvlz.jpg);
     background-repeat: no-repeat;

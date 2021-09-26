@@ -45,7 +45,7 @@ const Pokemon = (props) => {
             })}
         </div>
       </div>    
-      <div className="card-footer p-3 ">
+      <div className="card-footer bg-white p-3 ">
         <div className="d-flex flex-wrap justify-content-between align-items-center ">
           <div>
             {pokemon.stats.map((stats, idx) => {
