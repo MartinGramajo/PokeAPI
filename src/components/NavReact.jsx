@@ -11,9 +11,9 @@ export default function NavReact() {
       <Navbar className="nav"  bg="dark" expand="lg">
         <div>
           <Navbar.Brand href="#home">
-            <div className="mt-3">
+            <div className="mt-1">
             <img
-                style={{width:'50px'}}
+                style={{width:'40px'}}
                 src={pikachu}
                 alt="PokeApi-logo"
               />
