@@ -72,7 +72,7 @@ const Pokemon = (props) => {
                 <Button
                   className=" border-0 boton-pokemon"
                   onClick={clickHeart}
-                  variant="warning"
+                  variant="info"
                 >
                   <div className="pokemon-favorite"> {heart} </div>
                 </Button>
