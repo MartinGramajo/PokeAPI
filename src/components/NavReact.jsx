@@ -5,18 +5,12 @@ import "./navreact.css";
 export default function NavReact() {
   const imgUrl =
     "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png";
-  const pikachu = "https://assets.stickpng.com/images/580b57fcd9996e24bc43c325.png"
   return (
     <div>
       <Navbar className="nav"  bg="dark" expand="lg">
         <div>
           <Navbar.Brand href="#home">
-            <div className="mt-1">
-            <img
-                style={{width:'40px'}}
-                src={pikachu}
-                alt="PokeApi-logo"
-              />
+            <div className="mt-4">
               <img
                 className="navbar-image mt-1"
                 src={imgUrl}
